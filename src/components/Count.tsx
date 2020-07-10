@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-
+import WithTimer from './HOC';
+import CounterD from './Counter';
 interface IProps {
-  time: string;
+	time: string;
+	timeVal: any;
 }
 
 interface Istate {
@@ -10,6 +12,11 @@ interface Istate {
 }
 
 class Counter extends Component<IProps, Istate> {
+
+	constructor (props) {
+		super(props)
+	}
+
   state: Istate = {
 		time: this.props.time,
 		count: 0,
@@ -27,11 +34,16 @@ class Counter extends Component<IProps, Istate> {
 
   render() {
 		const { time, count } = this.state;
+		// console.log(time);
     return (
 			<div>
 				clock: {time}
 				<button onClick={(e) => this.handleClick(e)}>停止</button>
 				<p>次数: {count}</p>
+				<p>
+        	{this.props.timeVal.toLocaleTimeString()}
+      	</p>
+				<CounterD />
 			</div>
 		)
 	}
@@ -51,4 +63,4 @@ class Counter extends Component<IProps, Istate> {
 	}
 }
 
-export default Counter;
+export default WithTimer(Counter);

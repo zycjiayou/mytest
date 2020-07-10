@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+  .container {
+    width: 600px;
+    height: 300px;
+    display: flex;
+  }
+  .left {
+    flex: 1 2 500px;
+    background: red;
+  }
+  .right {
+    flex: 2 1 400px;
+    background: blue;
+  }
+</style>
+  <script>
+    // function* hello() {
+    //   yield 'hello';
+    //   yield 'world';
+    //   yield 123+22;
+    //   return 'ending';
+    // }
+
+    // let h = hello();
+    // console.log(h);
+    // console.log(h.next());
+
+    // function* f() {
+    //   console.log('执行了！')
+    //   const val = yield;
+    //   console.log(val);
+    // }
+
+    // var generator = f();
+    // generator.next();
+    // generator.next(1);
+    Array.prototype._splice = function (index, howmany, ...items) {
+      if (index < 0) {
+        if (Math.abs(index) > this.length) {
+          index = 0;
+        } else {
+          index += this.length;
+        }
+      }
+      
+      if (typeof howmany === 'undefined') {
+        howmany = this.length - index;
+      }
+      const removeList = this.slice(index, index + howmany);
+      const right = this.slice(index + howmany);
+      let addIndex = index;
+      [...items, right].forEach(item => {
+        this[addIndex] = item;
+        addIndex++;
+      });
+      this.length = addIndex;
+      return removeList;
+    }
+
+    console.log([1,2,3].splice(1));
+    console.log([1,2,3]._splice(1));
+    function setName(obj) {
+      obj.name = 'aaa';
+      obj = new Object(); // 如果是按引用传递的,此处传参进来obj应该被重新引用新的内存单元
+      obj.name = 'ccc';
+      return obj;
+    }
+
+    var person = new Object();
+    person.name = 'bbb';
+    var newPerson = setName(person);
+    console.log(person.name + ' | ' + newPerson.name); // aaa | ccc
+    var a = {
+      num:'1'
+    };
+
+    var b = {
+      num:'2'
+    };
+
+    function change(obj){
+      obj.num = '3';
+      obj = b;
+      return obj.num;
+    }
+
+    var result = change(a);
+    console.log(result + ' | ' + a.num);
+  </script>
+</body>
+</html>
