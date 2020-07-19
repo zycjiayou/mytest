@@ -5,9 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ts demo</title>
-  <script src="../libs/shape.js"></script>
+  <!-- <script src="../libs/shape.js"></script> -->
 </head>
 <body>
   <div id="root"></div>
 </body>
+<script>
+  Array.prototype._splice = function (index, howmany, ...items) {
+    if (howmany !== undefined) {
+
+    }
+    const delIndex = index + howmany;
+    let removeList = this.slice(index, delIndex);
+  }
+</script>
 </html>

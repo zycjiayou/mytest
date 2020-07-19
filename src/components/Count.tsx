@@ -9,18 +9,6 @@ interface Istate {
 	count: number;
 }
 
-const obj = {
-	name: 'bbb',
-	age: 20
-}
-
-function test() {
-	console.log('aaaaa', this.name);
-}
-
-const test1 = test.bind(obj);
-test1.call({name: 'ofdfljlf'})
-
 class Counter extends Component<IProps, Istate> {
   state: Istate = {
 		time: this.props.time,
