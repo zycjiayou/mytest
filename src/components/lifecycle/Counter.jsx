@@ -51,11 +51,11 @@ export default class Counter extends Component {
 
   componentDidMount() {
     console.log('4.渲染完成');
-    this.timer = setInterval(() => {
-      this.setState({
-        count: this.state.count + 1
-      });
-    },  3000);
+    // this.timer = setInterval(() => {
+    //   this.setState({
+    //     count: this.state.count + 1
+    //   });
+    // },  3000);
   }
 
   componentWillUnmount() {
